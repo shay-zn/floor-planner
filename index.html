@@ -9,8 +9,16 @@
 <body>
     <div class="app-container">
         <header class="app-header">
-            <h1>Floor Planner</h1>
+            <div class="header-left">
+                <h1>Floor Planner</h1>
+                <button id="info-btn" class="info-btn" title="Instructions and Tips">ℹ️</button>
+            </div>
             <div class="header-controls">
+                <button id="save-state-btn" class="btn btn-primary">Save State</button>
+                <label for="load-state-input" class="btn btn-secondary">
+                    Load State
+                    <input type="file" id="load-state-input" accept=".json" style="display: none;" />
+                </label>
                 <button id="export-btn" class="btn btn-primary">Export as Image</button>
                 <button id="clear-all-btn" class="btn btn-secondary">Clear All</button>
             </div>
@@ -21,13 +29,90 @@
             <div class="left-panel">
                 <div class="panel-header">
                     <h3>People</h3>
-                    <button id="add-person-btn" class="btn btn-small">+ Add Person</button>
+                    <div class="add-person-controls">
+                        <button id="add-person-btn" class="btn btn-small">+ Add Person</button>
+                        <button id="bulk-add-btn" class="btn btn-small">+ Bulk Add</button>
+                    </div>
                 </div>
                 
                 <div class="person-input" id="person-input" style="display: none;">
                     <input type="text" id="person-name-input" placeholder="Enter person name" />
+                    <div class="color-selection-group">
+                        <label>Color:</label>
+                        <div class="color-options">
+                            <input type="radio" id="color-blue" name="person-color" value="#3498db" checked>
+                            <label for="color-blue" class="color-option" style="background-color: #3498db;" title="Blue"></label>
+                            
+                            <input type="radio" id="color-green" name="person-color" value="#27ae60">
+                            <label for="color-green" class="color-option" style="background-color: #27ae60;" title="Green"></label>
+                            
+                            <input type="radio" id="color-red" name="person-color" value="#e74c3c">
+                            <label for="color-red" class="color-option" style="background-color: #e74c3c;" title="Red"></label>
+                            
+                            <input type="radio" id="color-orange" name="person-color" value="#f39c12">
+                            <label for="color-orange" class="color-option" style="background-color: #f39c12;" title="Orange"></label>
+                            
+                            <input type="radio" id="color-purple" name="person-color" value="#9b59b6">
+                            <label for="color-purple" class="color-option" style="background-color: #9b59b6;" title="Purple"></label>
+                            
+                            <input type="radio" id="color-teal" name="person-color" value="#1abc9c">
+                            <label for="color-teal" class="color-option" style="background-color: #1abc9c;" title="Teal"></label>
+                            
+                            <input type="radio" id="color-yellow" name="person-color" value="#f1c40f">
+                            <label for="color-yellow" class="color-option" style="background-color: #f1c40f;" title="Yellow"></label>
+                            
+                            <input type="radio" id="color-pink" name="person-color" value="#e91e63">
+                            <label for="color-pink" class="color-option" style="background-color: #e91e63;" title="Pink"></label>
+                            
+                            <input type="radio" id="color-brown" name="person-color" value="#8d6e63">
+                            <label for="color-brown" class="color-option" style="background-color: #8d6e63;" title="Brown"></label>
+                            
+                            <input type="radio" id="color-gray" name="person-color" value="#607d8b">
+                            <label for="color-gray" class="color-option" style="background-color: #607d8b;" title="Gray"></label>
+                        </div>
+                    </div>
                     <button id="save-person-btn" class="btn btn-small">Save</button>
                     <button id="cancel-person-btn" class="btn btn-small btn-secondary">Cancel</button>
+                </div>
+                
+                <div class="bulk-person-input" id="bulk-person-input" style="display: none;">
+                    <textarea id="bulk-person-names" placeholder="Enter person names (one per line)&#10;Example:&#10;John Smith&#10;Jane Doe&#10;Bob Johnson" rows="6"></textarea>
+                    <div class="color-selection-group">
+                        <label>Color for all:</label>
+                        <div class="color-options">
+                            <input type="radio" id="bulk-color-blue" name="bulk-person-color" value="#3498db" checked>
+                            <label for="bulk-color-blue" class="color-option" style="background-color: #3498db;" title="Blue"></label>
+                            
+                            <input type="radio" id="bulk-color-green" name="bulk-person-color" value="#27ae60">
+                            <label for="bulk-color-green" class="color-option" style="background-color: #27ae60;" title="Green"></label>
+                            
+                            <input type="radio" id="bulk-color-red" name="bulk-person-color" value="#e74c3c">
+                            <label for="bulk-color-red" class="color-option" style="background-color: #e74c3c;" title="Red"></label>
+                            
+                            <input type="radio" id="bulk-color-orange" name="bulk-person-color" value="#f39c12">
+                            <label for="bulk-color-orange" class="color-option" style="background-color: #f39c12;" title="Orange"></label>
+                            
+                            <input type="radio" id="bulk-color-purple" name="bulk-person-color" value="#9b59b6">
+                            <label for="bulk-color-purple" class="color-option" style="background-color: #9b59b6;" title="Purple"></label>
+                            
+                            <input type="radio" id="bulk-color-teal" name="bulk-person-color" value="#1abc9c">
+                            <label for="bulk-color-teal" class="color-option" style="background-color: #1abc9c;" title="Teal"></label>
+                            
+                            <input type="radio" id="bulk-color-yellow" name="bulk-person-color" value="#f1c40f">
+                            <label for="bulk-color-yellow" class="color-option" style="background-color: #f1c40f;" title="Yellow"></label>
+                            
+                            <input type="radio" id="bulk-color-pink" name="bulk-person-color" value="#e91e63">
+                            <label for="bulk-color-pink" class="color-option" style="background-color: #e91e63;" title="Pink"></label>
+                            
+                            <input type="radio" id="bulk-color-brown" name="bulk-person-color" value="#8d6e63">
+                            <label for="bulk-color-brown" class="color-option" style="background-color: #8d6e63;" title="Brown"></label>
+                            
+                            <input type="radio" id="bulk-color-gray" name="bulk-person-color" value="#607d8b">
+                            <label for="bulk-color-gray" class="color-option" style="background-color: #607d8b;" title="Gray"></label>
+                        </div>
+                    </div>
+                    <button id="save-bulk-people-btn" class="btn btn-small">Add All</button>
+                    <button id="cancel-bulk-btn" class="btn btn-small btn-secondary">Cancel</button>
                 </div>
 
                 <div class="people-list" id="people-list">
@@ -44,6 +129,19 @@
                             Upload Floor Plan
                             <input type="file" id="floor-plan-upload" accept="image/*,.pdf" style="display: none;" />
                         </label>
+                        
+                        <div class="zoom-controls" id="zoom-controls" style="display: none;">
+                            <button id="zoom-out-btn" class="btn btn-small" title="Zoom Out">−</button>
+                            <input type="range" id="zoom-slider" min="25" max="300" value="100" class="zoom-slider" title="Zoom Level">
+                            <span id="zoom-display" class="zoom-display">100%</span>
+                            <button id="zoom-in-btn" class="btn btn-small" title="Zoom In">+</button>
+                        </div>
+                        
+                        <div class="label-size-controls" id="label-size-controls" style="display: none;">
+                            <label class="control-label">Label Size:</label>
+                            <input type="range" id="label-size-slider" min="8" max="20" value="12" class="label-size-slider" title="Label Font Size">
+                            <span id="label-size-display" class="size-display">12px</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -54,37 +152,40 @@
                         <p class="upload-hint">Drag and drop or click "Upload Floor Plan" button</p>
                     </div>
                     <div class="floor-plan-canvas" id="floor-plan-canvas" style="display: none;">
-                        <img id="floor-plan-image" alt="Floor plan" />
-                        <div class="person-labels" id="person-labels">
-                            <!-- Draggable person labels will be placed here -->
+                        <div class="floor-plan-content" id="floor-plan-content">
+                            <img id="floor-plan-image" alt="Floor plan" />
+                            <div class="person-labels" id="person-labels">
+                                <!-- Draggable person labels will be placed here -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Panel: Instructions -->
-            <div class="right-panel">
-                <div class="panel-header">
-                    <h3>Instructions</h3>
-                </div>
-                <div class="instructions">
-                    <ol>
-                        <li>Upload a floor plan image or PDF</li>
-                        <li>Add people using the "Add Person" button</li>
-                        <li>Drag people from the list to place them on the floor plan</li>
-                        <li>Drag placed people around to rearrange seating</li>
-                        <li>Export the final arrangement as an image</li>
-                    </ol>
-                    
-                    <div class="tips">
-                        <h4>Tips:</h4>
-                        <ul>
-                            <li>Double-click a placed person to remove them from the floor plan</li>
-                            <li>Use clear, readable floor plan images for best results</li>
-                            <li>The app works best with images in standard formats (PNG, JPG, PDF)</li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+    </div>
+
+    <!-- Instructions Tooltip -->
+    <div id="instructions-tooltip" class="tooltip" style="display: none;">
+        <div class="tooltip-content">
+            <h4>How to Use Floor Planner</h4>
+            <ol>
+                <li>Upload a floor plan image or PDF</li>
+                <li>Add people using "Add Person" or "Bulk Add" buttons</li>
+                <li>Drag people from the list to place them on the floor plan</li>
+                <li>Drag placed people around to rearrange seating</li>
+                <li>Click the colored circle or paint brush icon to change colors</li>
+                <li>Export the final arrangement as an image</li>
+            </ol>
+            
+            <div class="tips">
+                <h4>Tips:</h4>
+                <ul>
+                    <li>Double-click a placed person to remove them from the floor plan</li>
+                    <li>Use clear, readable floor plan images for best results</li>
+                    <li>Save your work with "Save State" and load it later with "Load State"</li>
+                    <li>Use bulk add to quickly add multiple people with the same color</li>
+                </ul>
             </div>
         </div>
     </div>
