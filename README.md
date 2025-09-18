@@ -4,13 +4,36 @@ A simple, interactive web application for creating floor plan seating arrangemen
 
 ## Features
 
-- 📋 **Floor Plan Upload**: Upload floor plan images (PNG, JPG, GIF)
-- 👥 **People Management**: Add, edit, and delete people in your seating list
-- 🖱️ **Drag & Drop**: Intuitive drag-and-drop interface for placing people
-- 📍 **Repositioning**: Drag placed people around to rearrange seating
-- 💾 **Auto-save**: Automatically saves your work to browser local storage
-- 📤 **Export**: Export the final seating arrangement as a PNG image
-- 📱 **Responsive**: Works on desktop, tablet, and mobile devices
+### 🎨 **Color Customization**
+- **10 predefined colors**: Blue, Green, Red, Orange, Purple, Teal, Yellow, Pink, Brown, Gray
+- **Individual color editing**: Click the colored circle or paint brush icon to change any person's color
+- **Bulk color assignment**: Add multiple people with the same color using bulk input
+
+### 👥 **People Management**
+- **Individual person input**: Add people one by one with custom names and colors
+- **Bulk person input**: Add multiple people at once using textarea (one name per line)
+- **Scrollable people list**: Handles large numbers of people with smooth scrolling
+- **Drag and drop**: Drag people from the list onto the floor plan
+- **Easy repositioning**: Drag placed people around the floor plan to rearrange seating
+- **Quick removal**: Double-click placed people to remove them from the floor plan
+
+### 📋 **Floor Plan Support**
+- **Image upload**: Support for PNG, JPG, GIF formats
+- **Zoom controls**: Zoom in/out with buttons or slider (25% - 300%)
+- **Label size control**: Adjust person label font size for better visibility
+- **High-quality export**: Export final arrangement as PNG image
+
+### 💾 **State Management**
+- **Auto-save**: Automatically saves to browser localStorage
+- **File-based persistence**: Save complete state to JSON file for backup/sharing
+- **Cross-session recovery**: Load saved states even after browser restart
+- **Git-friendly**: JSON state files can be committed to version control
+
+### 🎯 **User Experience**
+- **Responsive design**: Works on desktop and mobile devices
+- **Intuitive interface**: Clean, modern design with helpful tooltips
+- **Space-efficient**: Instructions accessible via info icon (ℹ️) instead of taking up panel space
+- **Visual feedback**: Drag zones, hover effects, and smooth animations
 
 ## Getting Started
 
@@ -60,26 +83,47 @@ npm run serve
 - The image will appear in the center panel
 
 ### 2. Add People
+**Individual:**
 - Click the "+ Add Person" button in the left panel
-- Enter the person's name and click "Save"
-- The person will appear in the people list
+- Enter the person's name and select a color
+- Click "Save" and the person will appear in the people list
+
+**Bulk Add:**
+- Click the "+ Bulk Add" button for adding multiple people at once
+- Enter names (one per line) and select a color for all
+- Click "Add All" to create multiple people with the same color
 
 ### 3. Place People on the Floor Plan
 - **Method 1**: Drag a person from the left panel directly onto the floor plan
 - **Method 2**: The person will be positioned where you drop them
 
-### 4. Rearrange Seating
+### 4. Customize Colors
+- Click the colored circle next to any person's name to change their color
+- Or click the paint brush (🎨) icon to open the color editor
+- Select from 10 predefined colors and click "Save"
+
+### 5. Adjust View
+- Use zoom controls to zoom in/out (25% - 300%)
+- Adjust label size slider for better readability
+- The people list scrolls automatically when you have many people
+
+### 6. Rearrange Seating
 - Drag any placed person label around the floor plan to reposition them
 - Double-click a person label to remove them from the floor plan
 
-### 5. Export Your Work
+### 7. Export Your Work
 - Click the "Export as Image" button to download your seating arrangement
-- The exported image includes both the floor plan and all person labels
+- The exported image includes both the floor plan and all person labels with their colors
 
-### 6. Manage Your Data
-- Your work is automatically saved to your browser's local storage
-- Use "Clear All" to reset everything and start over
-- Delete individual people using the "×" button next to their name
+### 8. Manage Your Data
+- **Auto-save**: Your work is automatically saved to your browser's local storage
+- **Save State**: Click "Save State" to download a JSON file with your complete project
+- **Load State**: Click "Load State" to restore a previously saved project from JSON file
+- **Clear All**: Reset everything and start over
+- **Delete people**: Use the "×" button next to their name
+
+### 9. Get Help
+- Click the info icon (ℹ️) in the header for detailed instructions and tips
 
 ## File Structure
 
@@ -175,19 +219,33 @@ The code is organized into a single FloorPlanner class in `js/app.js` with clear
 
 This project is licensed under the MIT License - see the `package.json` file for details.
 
+## Changelog
+
+### Latest Version (Current)
+- ✨ **Added 10 predefined colors** for person labels (Blue, Green, Red, Orange, Purple, Teal, Yellow, Pink, Brown, Gray)
+- ✨ **Implemented inline color editing** for existing people with paint brush icon and clickable color indicators
+- ✨ **Added bulk person input** functionality to add multiple people with the same color
+- ✨ **Replaced instructions panel** with space-saving tooltip accessible via info icon
+- ✨ **Added comprehensive file-based state persistence** with JSON save/load functionality
+- ✨ **Implemented scrollable people list** for better handling of large numbers of people
+- 🎨 **Reduced label padding** for more compact appearance
+- 📱 **Enhanced responsive design** for better mobile experience
+- 🚀 **Improved overall user experience** with better visual feedback and interactions
+
 ## Future Enhancements
 
 Potential features that could be added:
 
 - [ ] PDF floor plan support (requires PDF.js library)
 - [ ] Multiple floor plans/rooms
-- [ ] Color coding for different types of people/roles
+- [ ] Custom color picker beyond predefined colors
 - [ ] Undo/redo functionality
 - [ ] Keyboard shortcuts
 - [ ] Print functionality
-- [ ] Import/export project files
 - [ ] Grid snap for precise positioning
 - [ ] Measurement tools
+- [ ] Person grouping and categories
+- [ ] Export to different formats (SVG, PDF)
 
 ## Support
 
