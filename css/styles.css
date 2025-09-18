@@ -1,0 +1,390 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* App container */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.app-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.header-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+/* Panels */
+.left-panel, .right-panel {
+    width: 280px;
+    background-color: white;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.right-panel {
+    border-right: none;
+    border-left: 1px solid #ddd;
+}
+
+.center-panel {
+    flex: 1;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+}
+
+.panel-header h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-small {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+/* People list */
+.person-input {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.person-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.person-input button {
+    margin-right: 0.5rem;
+}
+
+.people-list {
+    padding: 0;
+}
+
+.person-item {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+    transition: background-color 0.2s;
+}
+
+.person-item:hover {
+    background-color: #f8f9fa;
+}
+
+.person-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.person-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.person-status {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.person-status.placed {
+    color: #27ae60;
+}
+
+.delete-person-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.delete-person-btn:hover {
+    opacity: 1;
+    background-color: #ffeaea;
+}
+
+/* Floor plan */
+.floor-plan-header {
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floor-plan-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #666;
+    background-color: white;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.upload-hint {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.floor-plan-canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: white;
+}
+
+#floor-plan-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.person-labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Person labels on the floor plan */
+.person-label {
+    position: absolute;
+    background-color: #3498db;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: grab;
+    pointer-events: all;
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 10;
+    transition: all 0.2s;
+}
+
+.person-label:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.person-label.dragging {
+    cursor: grabbing;
+    z-index: 100;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Instructions */
+.instructions {
+    padding: 1rem;
+    line-height: 1.6;
+}
+
+.instructions ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.instructions ul {
+    margin-left: 1.5rem;
+}
+
+.instructions li {
+    margin-bottom: 0.5rem;
+}
+
+.tips {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.tips h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+/* Drag and drop visual feedback */
+.drag-over {
+    background-color: #e3f2fd !important;
+    border: 2px dashed #2196f3 !important;
+}
+
+.drop-zone {
+    position: relative;
+}
+
+.drop-zone::after {
+    content: "Drop here to place person";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(33, 150, 243, 0.9);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.drop-zone.drag-over::after {
+    opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .left-panel, .right-panel {
+        width: 100%;
+        max-height: 300px;
+    }
+    
+    .center-panel {
+        min-height: 400px;
+    }
+    
+    .app-header {
+        padding: 0.5rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .header-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.btn:focus,
+input:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+.person-item:focus {
+    background-color: #e3f2fd;
+    outline: 2px solid #3498db;
+    outline-offset: -2px;
+}

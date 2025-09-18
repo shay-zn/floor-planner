@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floor Planner</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Floor Planner</h1>
+            <div class="header-controls">
+                <button id="export-btn" class="btn btn-primary">Export as Image</button>
+                <button id="clear-all-btn" class="btn btn-secondary">Clear All</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Panel: People List -->
+            <div class="left-panel">
+                <div class="panel-header">
+                    <h3>People</h3>
+                    <button id="add-person-btn" class="btn btn-small">+ Add Person</button>
+                </div>
+                
+                <div class="person-input" id="person-input" style="display: none;">
+                    <input type="text" id="person-name-input" placeholder="Enter person name" />
+                    <button id="save-person-btn" class="btn btn-small">Save</button>
+                    <button id="cancel-person-btn" class="btn btn-small btn-secondary">Cancel</button>
+                </div>
+
+                <div class="people-list" id="people-list">
+                    <!-- People will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Center Panel: Floor Plan -->
+            <div class="center-panel">
+                <div class="floor-plan-header">
+                    <h3>Floor Plan</h3>
+                    <div class="floor-plan-controls">
+                        <label for="floor-plan-upload" class="btn btn-small">
+                            Upload Floor Plan
+                            <input type="file" id="floor-plan-upload" accept="image/*,.pdf" style="display: none;" />
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="floor-plan-container" id="floor-plan-container">
+                    <div class="upload-placeholder" id="upload-placeholder">
+                        <div class="upload-icon">📋</div>
+                        <p>Upload a floor plan image or PDF to get started</p>
+                        <p class="upload-hint">Drag and drop or click "Upload Floor Plan" button</p>
+                    </div>
+                    <div class="floor-plan-canvas" id="floor-plan-canvas" style="display: none;">
+                        <img id="floor-plan-image" alt="Floor plan" />
+                        <div class="person-labels" id="person-labels">
+                            <!-- Draggable person labels will be placed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Instructions -->
+            <div class="right-panel">
+                <div class="panel-header">
+                    <h3>Instructions</h3>
+                </div>
+                <div class="instructions">
+                    <ol>
+                        <li>Upload a floor plan image or PDF</li>
+                        <li>Add people using the "Add Person" button</li>
+                        <li>Drag people from the list to place them on the floor plan</li>
+                        <li>Drag placed people around to rearrange seating</li>
+                        <li>Export the final arrangement as an image</li>
+                    </ol>
+                    
+                    <div class="tips">
+                        <h4>Tips:</h4>
+                        <ul>
+                            <li>Double-click a placed person to remove them from the floor plan</li>
+                            <li>Use clear, readable floor plan images for best results</li>
+                            <li>The app works best with images in standard formats (PNG, JPG, PDF)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

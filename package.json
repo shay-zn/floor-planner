@@ -1,0 +1,20 @@
+{
+  "name": "floor-planner",
+  "version": "1.0.0",
+  "description": "Interactive floor planner with drag-and-drop seating arrangement",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "floor-planner",
+    "seating",
+    "drag-drop",
+    "interactive"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
